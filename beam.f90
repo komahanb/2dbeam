@@ -92,18 +92,18 @@ program example
      X_U(i) = infbound 
   end do
 
-  X(3)  = 40.e6
-  X_L(3)= 30.e6
-  X_U(3)= 50.e6
+  X(3)  = 40.0e3 !N.m
+  X_L(3)= 40.0e3 !N.m
+  X_U(3)= 40.0e3 !N.m
 
-  X(4)  = 150.0e3
-  X_L(4)= 130.0e3
-  X_U(4)= 170.0e3
+  X(4)  = 150.0 !N
+  X_L(4)= 150.0 !N
+  X_U(4)= 150.0 !N
 
 
-  dat(1) = 10.d6         !     sigma_allow= 10.0 !N/mm2
-  dat(2) = 2.0d6         !     tau_allow
-  dat(3) = 1.0           !     Fs
+  dat(1) = 10.0d6  !    sigma_allow N/m2
+  dat(2) = 2.0d6   !    tau_allow   N/m2
+  dat(3) = 1.0     !    Fs
 
   !
   !     Set bounds for the constraints
@@ -114,7 +114,10 @@ program example
      G_U(i)=0.d0
   end do
 
-  !Equality constraint
+  !
+  ! Equality constraint
+  !
+
   G_L(M)=0.0d0
   G_U(M)=0.d0
 
@@ -162,7 +165,7 @@ program example
      write(*,*)
      write(*,*) 'The solution was found.'
      write(*,*)
-     write(*,*) 'The final value of the objective function is ',F
+     write(*,*) 'The final value of the objective function is ',F,' m^2'
      write(*,*)
      write(*,*) 'The optimal values of X are:'
      write(*,*)
@@ -251,8 +254,8 @@ end program example
 
       grad(1) = x(2)*Fs
       grad(2) = x(1)*Fs
-      grad(3)= 0.0
-      grad(4)= 0.0
+      grad(3) = 0.0
+      grad(4) = 0.0
 
       IERR = 0
 
